@@ -2,11 +2,7 @@ export enum Element {
   Fire = 'fire',
   Water = 'water',
   Earth = 'earth',
-  Wind = 'wind',
-  Light = 'light',
-  Shadow = 'shadow',
-  Ice = 'ice',
-  Lightning = 'lightning',
+
 }
 
 export interface ElementalStats {
@@ -15,14 +11,7 @@ export interface ElementalStats {
 }
 
 export const elementalAdvantages: Record<Element, Element[]> = {
-  [Element.Fire]: [Element.Ice],
-  [Element.Water]: [Element.Fire],
-  [Element.Earth]: [Element.Lightning],
-  [Element.Wind]: [Element.Earth],
-  [Element.Light]: [Element.Shadow],
-  [Element.Shadow]: [Element.Light],
-  [Element.Ice]: [Element.Wind],
-  [Element.Lightning]: [Element.Water],
+
 };
 
 export function getElementalMultiplier(attacker: Element, defender: Element): number {

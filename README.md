@@ -17,8 +17,6 @@ The current implementation includes placeholder components and systems for:
 - Turn-based battle logic with elemental advantages
 - Evolution chain definitions and checks
 - Basic Zustand store for the player's Spirit Guardian
-- Save/load functions using browser storage
 
-Eight elemental guardians (earth, wind, water, fire, light, shadow, ice and lightning) each have simple two-stage evolution chains.
 
 These modules serve as a foundation for future development and integration.
