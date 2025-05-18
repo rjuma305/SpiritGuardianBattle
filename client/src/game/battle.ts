@@ -1,4 +1,5 @@
 import { Element, getElementalMultiplier } from './elements'
+import { AudioManager } from './AudioManager'
 
 export interface BattleGuardian {
   id: string
@@ -25,15 +26,18 @@ export class Battle {
   constructor(player: BattleGuardian, enemy: BattleGuardian) {
     this.player = { ...player }
     this.enemy = { ...enemy }
+    AudioManager.playMusic('battle')
   }
 
   attack(attacker: BattleGuardian, defender: BattleGuardian) {
     const multiplier = getElementalMultiplier(attacker.element, defender.element)
     const damage = Math.max(1, (attacker.attack - defender.defense) * multiplier)
     defender.hp -= damage
+    AudioManager.playSound('attack')
     if (defender.hp <= 0) {
       defender.hp = 0
       this.state = attacker === this.player ? BattleState.Won : BattleState.Lost
+      AudioManager.stopMusic('battle')
     }
   }
 

@@ -1,3 +1,17 @@
+import { Element } from './elements'
+import { AudioManager } from './AudioManager'
+
+export interface EncounterGuardian {
+  guardianId: string
+  element: Element
+  level: number
+}
+
+export interface RegionEncounterData {
+  rate: number
+  guardians: EncounterGuardian[]
+}
+
 const regions: Record<string, RegionEncounterData> = {
   forest: {
     rate: 0.2,
@@ -49,3 +63,16 @@ const regions: Record<string, RegionEncounterData> = {
     ],
   },
 }
+
+export function triggerEncounter(regionId: string): EncounterGuardian | null {
+  const data = regions[regionId]
+  if (!data) return null
+  if (Math.random() > data.rate) return null
+  AudioManager.playSound('encounter')
+  const guardian =
+    data.guardians[Math.floor(Math.random() * data.guardians.length)]
+  AudioManager.playGuardianVoice(guardian.guardianId)
+  return guardian
+}
+
+export { regions }

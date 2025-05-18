@@ -11,7 +11,10 @@ export class AudioManager {
 
   static playSound(id: string) {
     const snd = this.sounds[id]
-    if (snd) snd.play()
+    if (snd) {
+      snd.currentTime = 0
+      snd.play()
+    }
   }
 
   static loadMusic(id: string, src: string) {
@@ -22,7 +25,10 @@ export class AudioManager {
 
   static playMusic(id: string) {
     const mus = this.music[id]
-    if (mus) mus.play()
+    if (mus) {
+      mus.currentTime = 0
+      mus.play()
+    }
   }
 
   static stopMusic(id: string) {
@@ -37,3 +43,8 @@ export class AudioManager {
     voice.play()
   }
 }
+
+// Load placeholder sounds
+AudioManager.loadSound('attack', 'audio/sfx/attack.mp3')
+AudioManager.loadSound('encounter', 'audio/sfx/encounter.mp3')
+AudioManager.loadMusic('battle', 'audio/music/battle_theme.mp3')
