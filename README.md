@@ -17,3 +17,25 @@ The current implementation includes placeholder components and systems for:
 - Turn-based battle logic with elemental advantages
 
 These modules serve as a foundation for future development and integration.
+
+## Development Setup
+
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+2. Start the development server for the client:
+   ```bash
+   npm run dev
+   ```
+   This uses Vite to serve the React/TypeScript client.
+3. In another terminal, run the Express API server:
+   ```bash
+   npm run server
+   ```
+4. Build the client for production with:
+   ```bash
+   npm run build
+   ```
+
+The compiled client output will be placed in the `dist/` directory.
