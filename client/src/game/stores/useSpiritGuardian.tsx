@@ -13,9 +13,7 @@ interface SpiritGuardianState {
   guardian: SpiritGuardian | null
   setGuardian: (g: SpiritGuardian) => void
   gainExp: (amount: number) => void
-  /** Persist the current guardian to localStorage */
   saveGuardian: () => void
-  /** Load the guardian from localStorage */
   loadGuardian: () => void
   reset: () => void
 }
@@ -64,7 +62,7 @@ export const useSpiritGuardian = create<SpiritGuardianState>((set, get) => ({
   },
 }))
 
-// Rehydrate persisted guardian on application startup
+// Auto-load guardian on startup if in browser
 if (typeof window !== 'undefined') {
   useSpiritGuardian.getState().loadGuardian()
 }

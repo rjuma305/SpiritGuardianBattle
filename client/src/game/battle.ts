@@ -33,7 +33,9 @@ export class Battle {
     const multiplier = getElementalMultiplier(attacker.element, defender.element)
     const damage = Math.max(1, (attacker.attack - defender.defense) * multiplier)
     defender.hp -= damage
+
     AudioManager.playSound('attack')
+
     if (defender.hp <= 0) {
       defender.hp = 0
       this.state = attacker === this.player ? BattleState.Won : BattleState.Lost

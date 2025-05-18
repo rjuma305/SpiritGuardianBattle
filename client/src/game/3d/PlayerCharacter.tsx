@@ -2,7 +2,7 @@ import React from 'react'
 import { useFrame, ThreeEvent } from '@react-three/fiber'
 import { Mesh } from 'three'
 
-const PLAYER_SPEED = 0.05
+const PLAYER_SPEED = 0.075 // Slightly bumped from main for smoother feel
 
 export const PlayerCharacter: React.FC = () => {
   const meshRef = React.useRef<Mesh>(null)

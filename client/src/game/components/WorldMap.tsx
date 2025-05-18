@@ -8,20 +8,21 @@ export const WorldMap: React.FC = () => {
   const cols = 3
 
   return (
-    <div style={{ position: 'absolute', top: 0, right: 0 }}>
+    <div style={{ position: 'absolute', top: 0, right: 0, padding: 10 }}>
       <svg width={cols * size} height={Math.ceil(regions.length / cols) * size}>
-        {regions.map((r, idx) => {
-          const x = (idx % cols) * size
-          const y = Math.floor(idx / cols) * size
-          const isCurrent = regionId === r.id
+        {regions.map((region, index) => {
+          const x = (index % cols) * size
+          const y = Math.floor(index / cols) * size
+          const isCurrent = regionId === region.id
+
           return (
-            <g key={r.id}>
+            <g key={region.id}>
               <rect
                 x={x + 2}
                 y={y + 2}
                 width={size - 4}
                 height={size - 4}
-                fill="#444"
+                fill="#333"
                 stroke="white"
               />
               <text
@@ -31,10 +32,15 @@ export const WorldMap: React.FC = () => {
                 fill="white"
                 fontSize="8"
               >
-                {r.name}
+                {region.name}
               </text>
               {isCurrent && (
-                <circle cx={x + size / 2} cy={y + size / 2} r={6} fill="red" />
+                <circle
+                  cx={x + size / 2}
+                  cy={y + size / 2}
+                  r={6}
+                  fill="red"
+                />
               )}
             </g>
           )

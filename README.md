@@ -15,6 +15,11 @@ The current implementation includes placeholder components and systems for:
 - 3D Player character and world terrain
 - Random encounter manager with region-based data
 - Turn-based battle logic with elemental advantages
+- Evolution chain definitions and checks
+- Basic Zustand store for the player's Spirit Guardian with save/load support
+- Eight elemental guardian types with complete evolution chains
+- Simple AudioManager for background music and sound effects
+- Placeholder NPC component for world interactions
 
 These modules serve as a foundation for future development and integration.
 
@@ -23,19 +28,3 @@ These modules serve as a foundation for future development and integration.
 1. Install dependencies:
    ```bash
    npm install
-   ```
-2. Start the development server for the client:
-   ```bash
-   npm run dev
-   ```
-   This uses Vite to serve the React/TypeScript client.
-3. In another terminal, run the Express API server:
-   ```bash
-   npm run server
-   ```
-4. Build the client for production with:
-   ```bash
-   npm run build
-   ```
-
-The compiled client output will be placed in the `dist/` directory.
