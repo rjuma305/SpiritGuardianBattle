@@ -15,38 +15,54 @@ interface SpiritGuardianState {
   gainExp: (amount: number) => void
   saveGuardian: () => void
   loadGuardian: () => void
-  resetGuardian: () => void
+  reset: () => void
 }
+
+const STORAGE_KEY = 'spirit-guardian'
 
 export const useSpiritGuardian = create<SpiritGuardianState>((set, get) => ({
   guardian: null,
-  setGuardian: guardian => set({ guardian }),
+
+  setGuardian: guardian => {
+    set({ guardian })
+    get().saveGuardian()
+  },
+
   gainExp: amount => {
     const guardian = get().guardian
     if (!guardian) return
     const newExp = guardian.experience + amount
     const newLevel = guardian.level + Math.floor(newExp / 100)
-    set({
-      guardian: { ...guardian, experience: newExp % 100, level: newLevel },
-    })
+    const updated = { ...guardian, experience: newExp % 100, level: newLevel }
+    set({ guardian: updated })
+    get().saveGuardian()
   },
+
   saveGuardian: () => {
-    const guardian = get().guardian
+    const { guardian } = get()
     if (guardian) {
-      localStorage.setItem('guardian', JSON.stringify(guardian))
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(guardian))
     }
   },
+
   loadGuardian: () => {
-    const stored = localStorage.getItem('guardian')
+    const stored = localStorage.getItem(STORAGE_KEY)
     if (stored) {
-      set({ guardian: JSON.parse(stored) })
+      try {
+        set({ guardian: JSON.parse(stored) })
+      } catch (err) {
+        console.error('Failed to load guardian from localStorage', err)
+      }
     }
   },
-  resetGuardian: () => {
-    localStorage.removeItem('guardian')
+
+  reset: () => {
+    localStorage.removeItem(STORAGE_KEY)
     set({ guardian: null })
   },
 }))
 
-// Immediately attempt to load any saved guardian on startup
-useSpiritGuardian.getState().loadGuardian()
+// Auto-load guardian on startup if in browser
+if (typeof window !== 'undefined') {
+  useSpiritGuardian.getState().loadGuardian()
+}

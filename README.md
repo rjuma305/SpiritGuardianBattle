@@ -22,3 +22,9 @@ The current implementation includes placeholder components and systems for:
 - Placeholder NPC component for world interactions
 
 These modules serve as a foundation for future development and integration.
+
+## Development Setup
+
+1. Install dependencies:
+   ```bash
+   npm install
