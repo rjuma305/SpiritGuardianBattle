@@ -15,8 +15,5 @@ The current implementation includes placeholder components and systems for:
 - 3D Player character and world terrain
 - Random encounter manager with region-based data
 - Turn-based battle logic with elemental advantages
-- Evolution chain definitions and checks
-- Basic Zustand store for the player's Spirit Guardian
-
 
 These modules serve as a foundation for future development and integration.
