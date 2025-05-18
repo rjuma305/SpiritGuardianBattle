@@ -21,10 +21,12 @@ const STORAGE_KEY = 'spirit-guardian'
 
 export const useSpiritGuardian = create<SpiritGuardianState>((set, get) => ({
   guardian: null,
+
   setGuardian: guardian => {
     set({ guardian })
     localStorage.setItem(STORAGE_KEY, JSON.stringify(guardian))
   },
+
   gainExp: amount => {
     const guardian = get().guardian
     if (!guardian) return
@@ -34,10 +36,12 @@ export const useSpiritGuardian = create<SpiritGuardianState>((set, get) => ({
     set({ guardian: updated })
     localStorage.setItem(STORAGE_KEY, JSON.stringify(updated))
   },
+
   load: () => {
     const stored = localStorage.getItem(STORAGE_KEY)
     if (stored) set({ guardian: JSON.parse(stored) })
   },
+
   reset: () => {
     localStorage.removeItem(STORAGE_KEY)
     set({ guardian: null })
