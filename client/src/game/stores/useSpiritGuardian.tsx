@@ -27,4 +27,5 @@ export const useSpiritGuardian = create<SpiritGuardianState>((set, get) => ({
       guardian: { ...guardian, experience: newExp % 100, level: newLevel },
     })
   },
+
 }))

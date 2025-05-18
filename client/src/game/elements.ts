@@ -2,9 +2,7 @@ export enum Element {
   Fire = 'fire',
   Water = 'water',
   Earth = 'earth',
-  Air = 'air',
-  Light = 'light',
-  Dark = 'dark',
+
 }
 
 export interface ElementalStats {
@@ -13,12 +11,7 @@ export interface ElementalStats {
 }
 
 export const elementalAdvantages: Record<Element, Element[]> = {
-  [Element.Fire]: [Element.Earth],
-  [Element.Water]: [Element.Fire],
-  [Element.Earth]: [Element.Air],
-  [Element.Air]: [Element.Water],
-  [Element.Light]: [Element.Dark],
-  [Element.Dark]: [Element.Light],
+
 };
 
 export function getElementalMultiplier(attacker: Element, defender: Element): number {

@@ -17,13 +17,13 @@ const regions: Record<string, RegionEncounterData> = {
     rate: 0.2,
     guardians: [
       { guardianId: 'sprout', element: Element.Earth, level: 1 },
-      { guardianId: 'breeze', element: Element.Air, level: 2 },
+
     ],
   },
   volcano: {
     rate: 0.3,
     guardians: [
-      { guardianId: 'flameling', element: Element.Fire, level: 3 },
+
     ],
   },
 }

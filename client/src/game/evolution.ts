@@ -36,6 +36,7 @@ export const evolutionChains: Record<string, EvolutionNode> = {
       },
     ],
   },
+
 }
 
 export function checkEvolution(id: string, level: number, items: string[], location: string): string | null {
