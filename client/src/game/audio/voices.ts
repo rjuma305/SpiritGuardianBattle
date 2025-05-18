@@ -1,4 +1,4 @@
-import { AudioManager } from './AudioManager'
+import { AudioManager } from '../AudioManager'
 
 // Placeholder voice mappings for each guardian
 AudioManager.guardianVoices = {
