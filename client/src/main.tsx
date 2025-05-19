@@ -4,8 +4,9 @@ import { Canvas } from '@react-three/fiber'
 import { PlayerCharacter } from './game/3d/PlayerCharacter'
 import { WorldTerrain } from './game/3d/WorldTerrain'
 import { WorldMap } from './game/components/WorldMap'
+import { TitleScreen } from './game/components/TitleScreen'
 
-const App: React.FC = () => (
+const GameView: React.FC = () => (
   <>
     <Canvas shadows>
       <ambientLight />
@@ -15,6 +16,11 @@ const App: React.FC = () => (
     <WorldMap />
   </>
 )
+
+const App: React.FC = () => {
+  const [started, setStarted] = React.useState(false)
+  return started ? <GameView /> : <TitleScreen onStart={() => setStarted(true)} />
+}
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
